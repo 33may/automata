@@ -1,0 +1,4 @@
+John Doe (23, +232131123) withdraw 25;
+Jane Smith (30, +123456789) deposit 100;
+Alice Johnson (45, +987654321) transfer 200;
+Bob Brown (22, +112233445) withdraw 50

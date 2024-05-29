@@ -1,0 +1,163 @@
+digraph {
+	node4348391856 [label=names]
+	node4348391856 -> node4351631744
+	node4351631744 [label=transaction]
+	node4351631744 -> node4351631856
+	node4351631856 [label=person]
+	node4351631856 -> node4351631968
+	node4351631968 [label=name]
+	node4351631968 -> node4351632080
+	node4351632080 [label=firstName]
+	node4351632080 -> node4351961408
+	node4351961408 [label="'John'"]
+	node4351631968 -> node4351632192
+	node4351632192 [label=lastName]
+	node4351632192 -> node4351961792
+	node4351961792 [label="'Doe'"]
+	node4351631856 -> node4351962496
+	node4351962496 [label="'('"]
+	node4351631856 -> node4351632304
+	node4351632304 [label=age]
+	node4351632304 -> node4351962432
+	node4351962432 [label="'23'"]
+	node4351631856 -> node4351963392
+	node4351963392 [label="','"]
+	node4351631856 -> node4351632416
+	node4351632416 [label=phone]
+	node4351632416 -> node4351963648
+	node4351963648 [label="'+232131123'"]
+	node4351631856 -> node4351964352
+	node4351964352 [label="')'"]
+	node4351631744 -> node4351632528
+	node4351632528 [label=operation]
+	node4351632528 -> node4351632640
+	node4351632640 [label=type]
+	node4351632640 -> node4351962688
+	node4351962688 [label="'withdraw'"]
+	node4351632528 -> node4351632752
+	node4351632752 [label=ammount]
+	node4351632752 -> node4351964928
+	node4351964928 [label="'25'"]
+	node4348391856 -> node4351966016
+	node4351966016 [label="';'"]
+	node4348391856 -> node4351632976
+	node4351632976 [label=transaction]
+	node4351632976 -> node4351633088
+	node4351633088 [label=person]
+	node4351633088 -> node4351633200
+	node4351633200 [label=name]
+	node4351633200 -> node4351633312
+	node4351633312 [label=firstName]
+	node4351633312 -> node4351966464
+	node4351966464 [label="'Jane'"]
+	node4351633200 -> node4351633424
+	node4351633424 [label=lastName]
+	node4351633424 -> node4351966400
+	node4351966400 [label="'Smith'"]
+	node4351633088 -> node4351967040
+	node4351967040 [label="'('"]
+	node4351633088 -> node4351633536
+	node4351633536 [label=age]
+	node4351633536 -> node4351967168
+	node4351967168 [label="'30'"]
+	node4351633088 -> node4352098688
+	node4352098688 [label="','"]
+	node4351633088 -> node4351633648
+	node4351633648 [label=phone]
+	node4351633648 -> node4352098624
+	node4352098624 [label="'+123456789'"]
+	node4351633088 -> node4352099136
+	node4352099136 [label="')'"]
+	node4351632976 -> node4351633760
+	node4351633760 [label=operation]
+	node4351633760 -> node4351633872
+	node4351633872 [label=type]
+	node4351633872 -> node4352099520
+	node4352099520 [label="'deposit'"]
+	node4351633760 -> node4351633984
+	node4351633984 [label=ammount]
+	node4351633984 -> node4352099648
+	node4352099648 [label="'100'"]
+	node4348391856 -> node4352099968
+	node4352099968 [label="';'"]
+	node4348391856 -> node4351634096
+	node4351634096 [label=transaction]
+	node4351634096 -> node4351634208
+	node4351634208 [label=person]
+	node4351634208 -> node4351634320
+	node4351634320 [label=name]
+	node4351634320 -> node4351634432
+	node4351634432 [label=firstName]
+	node4351634432 -> node4352099904
+	node4352099904 [label="'Alice'"]
+	node4351634320 -> node4351634544
+	node4351634544 [label=lastName]
+	node4351634544 -> node4352100352
+	node4352100352 [label="'Johnson'"]
+	node4351634208 -> node4352100800
+	node4352100800 [label="'('"]
+	node4351634208 -> node4351634656
+	node4351634656 [label=age]
+	node4351634656 -> node4352100928
+	node4352100928 [label="'45'"]
+	node4351634208 -> node4352100736
+	node4352100736 [label="','"]
+	node4351634208 -> node4351634768
+	node4351634768 [label=phone]
+	node4351634768 -> node4352100864
+	node4352100864 [label="'+987654321'"]
+	node4351634208 -> node4352101312
+	node4352101312 [label="')'"]
+	node4351634096 -> node4351634880
+	node4351634880 [label=operation]
+	node4351634880 -> node4351634992
+	node4351634992 [label=type]
+	node4351634992 -> node4352101248
+	node4352101248 [label="'transfer'"]
+	node4351634880 -> node4351635104
+	node4351635104 [label=ammount]
+	node4351635104 -> node4352101504
+	node4352101504 [label="'200'"]
+	node4348391856 -> node4352101888
+	node4352101888 [label="';'"]
+	node4348391856 -> node4351635216
+	node4351635216 [label=transaction]
+	node4351635216 -> node4351635328
+	node4351635328 [label=person]
+	node4351635328 -> node4351635440
+	node4351635440 [label=name]
+	node4351635440 -> node4351635552
+	node4351635552 [label=firstName]
+	node4351635552 -> node4352102016
+	node4352102016 [label="'Bob'"]
+	node4351635440 -> node4351635664
+	node4351635664 [label=lastName]
+	node4351635664 -> node4352102144
+	node4352102144 [label="'Brown'"]
+	node4351635328 -> node4352102592
+	node4352102592 [label="'('"]
+	node4351635328 -> node4351635776
+	node4351635776 [label=age]
+	node4351635776 -> node4352102720
+	node4352102720 [label="'22'"]
+	node4351635328 -> node4352102528
+	node4352102528 [label="','"]
+	node4351635328 -> node4351635888
+	node4351635888 [label=phone]
+	node4351635888 -> node4352102656
+	node4352102656 [label="'+112233445'"]
+	node4351635328 -> node4352102912
+	node4352102912 [label="')'"]
+	node4351635216 -> node4351636000
+	node4351636000 [label=operation]
+	node4351636000 -> node4351636112
+	node4351636112 [label=type]
+	node4351636112 -> node4352103360
+	node4352103360 [label="'withdraw'"]
+	node4351636000 -> node4351636224
+	node4351636224 [label=ammount]
+	node4351636224 -> node4352103296
+	node4352103296 [label="'50'"]
+	node4348391856 -> node4352103488
+	node4352103488 [label="'<EOF>'"]
+}
