@@ -6,18 +6,11 @@ else:
 
 class HtmlVisitor(ParseTreeVisitor):
     def __init__(self):
-        self.a = 33
+        self.results = []
 
     def visitDocument(self, ctx:htmlParser.DocumentContext):
         print("Visiting document")
-        if ctx.doctype():
-            self.visitDoctype(ctx.doctype())
-        if ctx.html():
-            self.visitHtml(ctx.html())
-        return None
-
-    def visitDoctype(self, ctx:htmlParser.DoctypeContext):
-        print("Visiting doctype: " + ctx.getText())
+        self.visitHtml(ctx.html())
         return None
 
     def visitHtml(self, ctx:htmlParser.HtmlContext):
@@ -90,3 +83,71 @@ class HtmlVisitor(ParseTreeVisitor):
         text = ctx.getText()
         print(f"Content: {text}")
         return None
+
+    def search(self, ctx:htmlParser.DocumentContext, search_term:str):
+        self.results = []
+        self._searchHelper(ctx, search_term)
+        return self.results
+
+    def _searchHelper(self, ctx, search_term):
+        if isinstance(ctx, htmlParser.DocumentContext):
+            self._searchHelper(ctx.html(), search_term)
+        elif isinstance(ctx, htmlParser.HtmlContext):
+            self._searchHelper(ctx.head(), search_term)
+            self._searchHelper(ctx.body(), search_term)
+        elif isinstance(ctx, htmlParser.HeadContext):
+            for element in ctx.element():
+                self._searchHelper(element, search_term)
+        elif isinstance(ctx, htmlParser.BodyContext):
+            for element in ctx.element():
+                self._searchHelper(element, search_term)
+        elif isinstance(ctx, htmlParser.ElementContext):
+            if self._matches(ctx, search_term):
+                self.results.append(self._getInnerHtml(ctx))
+            for child in ctx.children:
+                if isinstance(child, htmlParser.ElementContext):
+                    self._searchHelper(child, search_term)
+                else:
+                    self._searchHelper(child, search_term)
+
+
+    def _matches(self, ctx, search_term):
+        if search_term.startswith('#'):
+            return self._hasAttribute(ctx, 'id', search_term[1:])
+        elif search_term.startswith('.'):
+            return self._hasAttribute(ctx, 'class', search_term[1:])
+        else:
+            return self._isTag(ctx, search_term)
+
+    def _hasAttribute(self, ctx, attr_name, attr_value):
+        for attr in ctx.tag_open().attribute():
+            name = attr.TEXT().getText()
+            value = attr.VALUE().getText().strip('"')
+            if name == attr_name and value == attr_value:
+                return True
+        return False
+
+    def _isTag(self, ctx, tag_name):
+        return ctx.tag_open().tag_name().getText() == tag_name
+
+    def _getInnerHtml(self, ctx):
+        content = []
+        for child in ctx.children:
+            if isinstance(child, htmlParser.ElementContext):
+                content.append(self._getInnerHtml(child))
+            elif isinstance(child, htmlParser.ContentContext):
+                seq = []
+                for text in child.children:
+                    seq.append(text.getText())
+                content.extend(seq)
+            elif isinstance(child, htmlParser.Tag_openContext):
+                tag_str =' '.join([text.getText() for text in child.children])
+                content.append(tag_str)
+            elif isinstance(child, htmlParser.Tag_closeContext):
+                tag_str = ''.join([text.getText() for text in child.children])
+                content.append(tag_str)
+            else:
+                content.append(child.getText())
+
+        final_content = ' '.join(content)
+        return final_content

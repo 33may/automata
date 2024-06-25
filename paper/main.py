@@ -4,7 +4,6 @@ from htmlParser import htmlParser
 from htmlVisitor import HtmlVisitor
 
 def main():
-    print("Reading program from page.html")
     with open("page.html", 'r') as file:
         program = file.read()
 
@@ -15,11 +14,15 @@ def main():
     parser = htmlParser(stream)
     tree = parser.document()
 
-    print("Parsed tree:")
-    print(tree.toStringTree(recog=parser))
+    # print("Parsed tree:")
+    # print(tree.toStringTree(recog=parser))
 
     visitor = HtmlVisitor()
-    visitor.visitDocument(tree)
+
+    search_term = 'ul'
+    results = visitor.search(tree, search_term)
+    for result in results:
+        print(result)
 
 if __name__ == "__main__":
     main()
