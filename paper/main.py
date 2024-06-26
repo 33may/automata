@@ -14,12 +14,11 @@ def main():
     parser = htmlParser(stream)
     tree = parser.document()
 
-    # print("Parsed tree:")
-    # print(tree.toStringTree(recog=parser))
-
     visitor = HtmlVisitor()
 
-    search_term = 'ul'
+    # visitor.visitDocument(tree)
+
+    search_term = '.main'
     results = visitor.search(tree, search_term)
     for result in results:
         print(result)

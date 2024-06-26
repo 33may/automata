@@ -1,7 +1,7 @@
 grammar html;
 
 document
-    : doctype? html EOF
+    : doctype? (html | element*) EOF
     ;
 
 doctype

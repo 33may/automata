@@ -14,31 +14,31 @@ class HtmlVisitor(ParseTreeVisitor):
         return None
 
     def visitHtml(self, ctx:htmlParser.HtmlContext):
-        print("Visiting html: " + ctx.getText())
+        print("Visiting html: " + self._getInnerHtml(ctx))
         self.visitHead(ctx.head())
         self.visitBody(ctx.body())
         return None
 
     def visitHead(self, ctx:htmlParser.HeadContext):
-        print("Visiting head: " + ctx.getText())
+        print("Visiting head: " + self._getInnerHtml(ctx))
         for element in ctx.element():
             self.visitElement(element)
         return None
 
     def visitBody(self, ctx:htmlParser.BodyContext):
-        print("Visiting body: " + ctx.getText())
+        print("Visiting body: " + self._getInnerHtml(ctx))
         for element in ctx.element():
             self.visitElement(element)
         return None
 
     def visitElement(self, ctx:htmlParser.ElementContext):
-        print("Visiting element: " + ctx.getText())
+        print("Visiting element: " + self._getInnerHtml(ctx))
         if ctx.tag_open():
             self.visitTag_open(ctx.tag_open())
-            for child in ctx.content():
+            for child in ctx.children:
                 if isinstance(child, htmlParser.ElementContext):
                     self.visitElement(child)
-                else:
+                elif isinstance(child, htmlParser.ContentContext):
                     self.visitContent(child)
             self.visitTag_close(ctx.tag_close())
         elif ctx.self_closing_tag():
@@ -80,8 +80,7 @@ class HtmlVisitor(ParseTreeVisitor):
         return None
 
     def visitContent(self, ctx:htmlParser.ContentContext):
-        text = ctx.getText()
-        print(f"Content: {text}")
+        print(f"Content: {self._getInnerHtml(ctx)}")
         return None
 
     def search(self, ctx:htmlParser.DocumentContext, search_term:str):
